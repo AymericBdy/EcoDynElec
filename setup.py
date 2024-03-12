@@ -3,13 +3,10 @@ import os
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-with open(os.path.join(dir_path, "README.md"), "r", encoding="utf-8") as fh:
+with open( os.path.join(dir_path,"README.md"), mode="r", encoding='utf8') as fh:
     long_description = fh.read()
-if os.path.exists(os.path.join(dir_path, "requirements.txt")):
-    with open(os.path.join(dir_path, "requirements.txt")) as f:
-        requirements = f.read().splitlines()
-else:
-    requirements = ['numpy', 'pandas', 'openpyxl', 'xlrd', 'odfpy', 'paramiko', 'matplotlib', 'tabula-py']
+with open( os.path.join(dir_path,"requirements.txt"), mode='r', encoding='utf8') as f:
+    requirements = f.read().splitlines()
 
 
 setup(
@@ -21,7 +18,7 @@ setup(
     author="Francois Ledee, Aymeric Bourdy",
     author_email="ledee.francois@gmail.com, aymericb5@gmail.com",
     url="https://gitlab.com/fledee/ecodynelec/",
-    packages=find_packages(".", exclude=['test']),
+    packages=find_packages(dir_path, exclude=['test']),
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
